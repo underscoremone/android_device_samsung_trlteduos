@@ -31,12 +31,15 @@
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
 
-#include "vendor_init.h"
+#include <android-base/properties.h>
+
 #include "property_service.h"
+#include "vendor_init.h"
 #include "log.h"
-#include "util.h"
 
 #include "init_apq8084.h"
+
+using android::base::GetProperty;
 
 void gsm_properties()
 {
@@ -56,11 +59,11 @@ void cdma_properties()
 
 void init_target_properties()
 {
-    std::string platform = property_get("ro.board.platform");
+    std::string platform = GetProperty("ro.board.platform", "");
     if (platform != ANDROID_TARGET)
         return;
 
-    std::string bootloader = property_get("ro.bootloader");
+    std::string bootloader = GetProperty("ro.bootloader", "");
 
     if (bootloader.find("N9100ZC") == 0) {
         property_override("ro.build.fingerprint", "samsung/trlteduoszc/trltechn:6.0.1/MMB29M/N9100ZCS1DQH1:user/release-keys");
@@ -91,10 +94,8 @@ void init_target_properties()
         property_override("ro.product.name", "trlteduosctc");
         property_override("rild.libpath", "/system/lib/libsec-ril-09w.so");
         cdma_properties();
-    } else {
-        ERROR("Setting product info FAILED\n");
     }
 
-    std::string device = property_get("ro.product.device");
-    INFO("Found bootloader id %s setting build properties for %s device\n", bootloader.c_str(), device.c_str());
+    std::string device = GetProperty("ro.product.device", "");
+    LOG(INFO) << "Found bootloader id " << bootloader << " setting build properties for " << device << " device" << std::endl;
 }
