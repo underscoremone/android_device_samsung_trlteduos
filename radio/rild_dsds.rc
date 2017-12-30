@@ -5,24 +5,24 @@
 # This is a common source of Android security bugs.
 #
 
-# for multi rild
-service ril-daemon1 /system/bin/rild -l /system/vendor/lib/libsec-ril-dsds.so -c 2
+# Second RIL daemon for CDMA (SM-n9109W) device
+service ril-daemon2-cdma /vendor/bin/hw/rild -l /vendor/lib/libsec-ril-dsds-09w.so -c 2
     class main
     user radio
     disabled
     group radio cache inet misc audio log readproc wakelock oem_2901
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
-# for trlteduosctc
-service ril-daemon1-09w /system/bin/rild -l /system/vendor/lib/libsec-ril-dsds-09w.so -c 2
+# Second RIL daemon for GSM devices
+service ril-daemon2-gsm /vendor/bin/hw/rild -l /vendor/lib/libsec-ril-dsds.so -c 2
     class main
     user radio
     disabled
     group radio cache inet misc audio log readproc wakelock oem_2901
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
-service qcom-ril-sh /system/bin/sh /init.qcom.ril.sh
-    class late_start
-    user root
-    group root
-    oneshot
+on property:rild.lib2_type=cdma
+    start ril-daemon2-cdma
+
+on property:rild.lib2_type=gsm
+    start ril-daemon2-gsm
