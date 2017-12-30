@@ -45,6 +45,7 @@ using android::init::property_set;
 void gsm_properties()
 {
     property_set("telephony.lteOnGsmDevice", "1");
+    property_set("rild.lib2_type", "gsm");
     property_set("ro.telephony.default_network", "9");
 }
 
@@ -54,6 +55,7 @@ void cdma_properties()
     property_set("ro.cdma.home.operator.numeric", "46003");
     property_set("ro.telephony.default_cdma_sub", "0");
     property_set("ril.subscription.types", "NV,RUIM");
+    property_set("rild.lib2_type", "cdma");
     property_set("ro.telephony.default_network", "10");
     property_set("telephony.lteOnCdmaDevice", "1");
 }
@@ -93,7 +95,7 @@ void init_target_properties()
         property_override("ro.product.model", "SM-N9109W");
         property_override("ro.product.device", "trltechn");
         property_override("ro.product.name", "trlteduosctc");
-        property_override("rild.libpath", "/system/lib/libsec-ril-09w.so");
+        property_override("rild.libpath", "/system/vendor/lib/libsec-ril-09w.so");
         cdma_properties();
     }
 
