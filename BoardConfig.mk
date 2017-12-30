@@ -35,5 +35,8 @@ BOARD_RECOVERYIMAGE_PARTITION_SIZE := 19922944
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3472883712
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 11874054144
 
+# Radio/RIL
+include $(COMMON_PATH)/radio/dual/board.mk
+
 # inherit from the proprietary version
 -include vendor/samsung/trlteduos/BoardConfigVendor.mk
