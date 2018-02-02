@@ -36,15 +36,8 @@ bin/mdm_helper
 bin/mdm_helper_proxy
 bin/qcks
 bin/qmuxd
-bin/rild
-bin/rmnetcli
-lib/libreference-ril.so
-lib/libril.so
-lib/librmnetctl.so
 lib/libsec-ril.so
 lib/libsec-ril-dsds.so
 lib/libsec-ril-09w.so
 lib/libsec-ril-dsds-09w.so
-lib/libsecril-client.so
-lib/libsecnativefeature.so
 vendor/lib/libril-qcril-hook-oem.so
