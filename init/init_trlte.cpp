@@ -42,7 +42,6 @@ void gsm_properties()
 {
     property_set("telephony.lteOnGsmDevice", "1");
     property_set("ro.telephony.default_network", "9");
-    property_set("ro.telephony.ril.config", "newDialCode");
 }
 
 void cdma_properties()
@@ -53,7 +52,6 @@ void cdma_properties()
     property_set("ril.subscription.types", "NV,RUIM");
     property_set("ro.telephony.default_network", "10");
     property_set("telephony.lteOnCdmaDevice", "1");
-    property_set("ro.telephony.ril.config", "newDriverCallU,newDialCode");
 }
 
 void init_target_properties()
@@ -70,7 +68,6 @@ void init_target_properties()
         property_override("ro.product.model", "SM-N9100");
         property_override("ro.product.device", "trltechn");
         property_override("ro.product.name", "trlteduoszc");
-        property_set("rild.libpath", "/system/lib/libsec-ril.so");
         gsm_properties();
     } else if (bootloader.find("N9100ZH") == 0) {
         property_override("ro.build.fingerprint", "samsung/trlteduoszh/trltechnzh:6.0.1/MMB29M/N9100ZHU1DQG1:user/release-keys");
@@ -78,7 +75,6 @@ void init_target_properties()
         property_override("ro.product.model", "SM-N9100");
         property_override("ro.product.device", "trltechnzh");
         property_override("ro.product.name", "trlteduoszh");
-        property_set("rild.libpath", "/system/lib/libsec-ril.so");
         gsm_properties();
     } else if (bootloader.find("N9106W") == 0) {
         property_override("ro.build.fingerprint", "samsung/trlteduoszn/trltechn:6.0.1/MMB29M/N9106WZNU1DQB1:user/release-keys");
@@ -86,7 +82,6 @@ void init_target_properties()
         property_override("ro.product.model", "SM-N9106W");
         property_override("ro.product.device", "trltechn");
         property_override("ro.product.name", "trlteduoszn");
-        property_set("rild.libpath", "/system/lib/libsec-ril.so");
         gsm_properties();
     } else if (bootloader.find("N9109W") == 0) {
         property_override("ro.build.fingerprint", "samsung/trlteduosctc/trltechn:6.0.1/MMB29M/N9109WKEU1DQD1:user/release-keys");
@@ -94,7 +89,7 @@ void init_target_properties()
         property_override("ro.product.model", "SM-N9109W");
         property_override("ro.product.device", "trltechn");
         property_override("ro.product.name", "trlteduosctc");
-        property_set("rild.libpath", "/system/lib/libsec-ril-09w.so");
+        property_override("rild.libpath", "/system/lib/libsec-ril-09w.so");
         cdma_properties();
     } else {
         ERROR("Setting product info FAILED\n");
