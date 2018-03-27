@@ -15,8 +15,8 @@ vendor/lib/libqmiservices.so:vendor/lib/libqmiservices.so
 lib/libprotobuf-cpp-full.so:vendor/lib/libprotobuf-cpp-full.so
 bin/efsks:vendor/bin/efsks
 bin/ks:vendor/bin/ks
-bin/mdm_helper:vendor/bin/mdm_helper|c6de3cd2733ce2ae846b70c4dc3f62c9
-bin/mdm_helper_proxy:vendor/bin/mdm_helper_proxy|f425eefa3b0676c656b36400b87f4b38
+bin/mdm_helper:vendor/bin/mdm_helper
+bin/mdm_helper_proxy:vendor/bin/mdm_helper_proxy
 bin/netmgrd:vendor/bin/netmgrd
 bin/qcks:vendor/bin/qcks
 bin/qmuxd:vendor/bin/qmuxd
